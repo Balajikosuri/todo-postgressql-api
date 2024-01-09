@@ -26,12 +26,12 @@ const todoController = {
 
   create: async (req, res) => {
     try {
-      const { description, status = false } = req.body;
+      const { description, completed = false } = req.body;
 
       const sql =
-        "INSERT INTO todos(description, status) VALUES($1, $2) RETURNING *";
+        "INSERT INTO todos(description, completed) VALUES($1, $2) RETURNING *";
 
-      const { rows } = await pool.query(sql, [description, status]);
+      const { rows } = await pool.query(sql, [description, completed]);
 
       // res.json({ msg: "OK", data: rows[0] });
       res.json({ message: "your Todo added successfully!" });
@@ -42,14 +42,14 @@ const todoController = {
 
   updateById: async (req, res) => {
     try {
-      const { description, status } = req.body;
+      const { description, completed } = req.body;
 
       const sql =
-        "UPDATE todos set description = $1, status = $2 where id = $3 RETURNING *";
+        "UPDATE todos set description = $1, completed = $2 where id = $3 RETURNING *";
 
       const { rows } = await pool.query(sql, [
         description,
-        status,
+        completed,
         req.params.id,
       ]);
 
