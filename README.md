@@ -1,4 +1,4 @@
-# Todo API by using PostgresSQL and Node.js
+# Todo API by using PostgresSQL and Node.js.
 
 This is a simple Todo API built with Node.js, Express, and PostgreSQL.
 
